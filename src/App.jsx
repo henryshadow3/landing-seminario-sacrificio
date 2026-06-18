@@ -606,31 +606,80 @@ export default function App() {
         </div>
       </div>
 
+      {/* PROMO IMAGE SECTION */}
+      <section className="py-0 relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 1.03 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="relative max-w-4xl mx-auto px-4 py-16"
+        >
+          <img
+            src="/images/malinalcoseminario.png"
+            alt="El Sacrificio de los Que No Esperan"
+            className="w-full rounded-3xl shadow-2xl shadow-black/80"
+            style={{ border: '1px solid rgba(212,175,55,0.2)' }}
+          />
+          <div className="absolute inset-0 rounded-3xl pointer-events-none"
+            style={{ boxShadow: 'inset 0 0 80px rgba(212,175,55,0.05)' }} />
+        </motion.div>
+      </section>
+
       {/* INVESTMENT & SCARCITY SECTION */}
       <section className="py-28 px-6 bg-black relative border-b border-white/5">
-        <div className="max-w-4xl mx-auto relative z-10 text-center">
+        <div className="max-w-5xl mx-auto relative z-10">
+          {/* Header centered */}
+          <div className="text-center mb-16">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+              className="space-y-6"
+            >
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gold-medium font-bold">
+                <DollarSign className="w-4 h-4 text-gold-medium" />
+                <span>Tu Consagración</span>
+              </div>
+              <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-glow-gold font-bold">
+                Inversión del Seminario
+              </h2>
+              <p className="text-gray-400 text-base max-w-xl mx-auto font-light">
+                Aparta tu lugar con anticipación. El seminario es de cupo estrictamente limitado.
+              </p>
+            </motion.div>
+          </div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="space-y-6"
-          >
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gold-medium font-bold">
-              <DollarSign className="w-4 h-4 text-gold-medium" />
-              <span>Tu Consagración</span>
-            </div>
+          {/* Two columns: video + pricing */}
+          <div className="grid md:grid-cols-2 gap-10 items-center">
 
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-glow-gold font-bold">
-              Inversión del Seminario
-            </h2>
-            <p className="text-gray-400 text-base max-w-xl mx-auto font-light">
-              Aparta tu lugar con anticipación. El seminario es de cupo estrictamente limitado.
-            </p>
-          </motion.div>
+            {/* Video vertical en bucle */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex justify-center"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/80" style={{ border: '1px solid rgba(212,175,55,0.2)', maxWidth: '320px', width: '100%' }}>
+                <video
+                  src="/images/maliseminario.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 rounded-3xl pointer-events-none"
+                  style={{ boxShadow: 'inset 0 -60px 60px rgba(0,0,0,0.6)' }} />
+              </div>
+            </motion.div>
 
-          <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {/* Pricing cards */}
+            <div className="space-y-6">
+
+          <div className="grid grid-cols-1 gap-6">
 
             {/* Regular price card */}
             <motion.div
@@ -708,7 +757,9 @@ export default function App() {
             </p>
           </motion.div>
 
-        </div>
+            </div>{/* end pricing cards column */}
+          </div>{/* end two columns grid */}
+        </div>{/* end max-w-5xl */}
       </section>
 
       {/* Asymmetric photo grid after Investment, before Philosophy */}
