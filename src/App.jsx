@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   Calendar,
@@ -10,9 +9,6 @@ import {
   BookOpen,
   ArrowRight,
   MessageSquare,
-  DollarSign,
-  Info,
-  Clock,
   ChevronDown
 } from 'lucide-react';
 import GlimmerBackground from './components/GlimmerBackground';
@@ -47,7 +43,16 @@ export default function App() {
   const heroParallax = useTransform(scrollY, [0, 600], [0, -120]);
 
   return (
-    <div className="relative min-h-screen bg-black text-gray-200 font-sans selection:bg-gold-medium selection:text-black overflow-x-hidden">
+    <div className="templo-shell relative min-h-screen bg-black text-gray-200 font-sans selection:bg-gold-medium selection:text-black overflow-x-hidden">
+
+      {/* Fixed button: Regresar al Templo */}
+      <a
+        href="/"
+        className="templo-retorno fixed top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-gold-medium/40 text-gold-medium hover:text-gold-light hover:border-gold-light/60 transition-all duration-300 backdrop-blur-sm text-sm font-medium"
+      >
+        <span>←</span>
+        <span>REGRESAR AL TEMPLO</span>
+      </a>
 
       {/* 1. White Glimmer Particle Background */}
       <GlimmerBackground />
@@ -78,7 +83,7 @@ export default function App() {
       </motion.a>
 
       {/* HEADER / NAVBAR */}
-      <header className="relative z-10 w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center border-b border-white/5">
+      <header className="templo-cabecera relative z-10 w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center border-b border-white/5">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -86,7 +91,7 @@ export default function App() {
           className="flex items-center gap-2"
         >
           <span className="font-serif text-lg tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-gold-medium via-amber-glow to-gold-light font-bold">
-            INTEGRARSE
+            INTEGRARSE // ARCHIVO DE SEMINARIO
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-terracota"></span>
         </motion.div>
@@ -117,7 +122,7 @@ export default function App() {
             style={{ y: heroParallax }}
           >
             <img
-              src="/images/mali10.jpeg"
+              src="./images/mali10.jpeg"
               alt="Malinalco de noche"
               className="w-full h-full object-cover opacity-35 filter brightness-75"
             />
@@ -234,7 +239,7 @@ export default function App() {
           className="absolute inset-0 scale-125"
           style={{ y: parallaxY1 }}
         >
-          <img src="/images/mali3.jpeg" alt="El Valle" className="w-full h-full object-cover" />
+          <img src="./images/mali3.jpeg" alt="El Valle" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a] opacity-60" />
         </motion.div>
         <div className="absolute inset-0 flex items-center justify-center">
@@ -337,11 +342,11 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <div className="overflow-hidden rounded-tl-3xl rounded-bl-3xl h-64 relative group">
-              <img src="/images/mali8.jpeg" alt="El Santuario" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img src="./images/mali8.jpeg" alt="El Santuario" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-terracota-base/30" />
             </div>
             <div className="overflow-hidden rounded-tr-3xl rounded-br-3xl h-64 relative group">
-              <img src="/images/mali1.jpeg" alt="La Terraza" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img src="./images/mali1.jpeg" alt="La Terraza" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-terracota-base/30" />
             </div>
           </motion.div>
@@ -431,10 +436,10 @@ export default function App() {
           <div className="overflow-x-auto scrollbar-hide mb-12 -mx-4 px-4">
             <div className="flex gap-4 w-max">
               {[
-                { src: '/images/mali4.jpeg', label: 'La Terraza' },
-                { src: '/images/mali10.jpeg', label: 'Noche de Estrellas' },
-                { src: '/images/mali3.jpeg', label: 'El Valle' },
-                { src: '/images/mali2.jpeg', label: 'La Alberca' },
+                { src: './images/mali4.jpeg', label: 'La Terraza' },
+                { src: './images/mali10.jpeg', label: 'Noche de Estrellas' },
+                { src: './images/mali3.jpeg', label: 'El Valle' },
+                { src: './images/mali2.jpeg', label: 'La Alberca' },
               ].map((img, i) => (
                 <motion.div
                   key={i}
@@ -516,7 +521,7 @@ export default function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <img src="/images/mali9.jpeg" alt="El Campo" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+              <img src="./images/mali9.jpeg" alt="El Campo" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <p className="text-white/90 text-lg tracking-[0.25em] font-light">EL LUGAR DONDE TODO CAMBIA</p>
@@ -581,7 +586,7 @@ export default function App() {
           className="absolute inset-0 scale-125"
           style={{ y: parallaxY2 }}
         >
-          <img src="/images/mali2.jpeg" alt="La Alberca" className="w-full h-full object-cover" />
+          <img src="./images/mali2.jpeg" alt="La Alberca" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/50" />
         </motion.div>
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-8 text-center">
@@ -616,7 +621,7 @@ export default function App() {
           className="relative max-w-4xl mx-auto px-4 py-16"
         >
           <img
-            src="/images/malinalcoseminario.png"
+            src="./images/malinalcoseminario.png"
             alt="El Sacrificio de los Que No Esperan"
             className="w-full rounded-3xl shadow-2xl shadow-black/80"
             style={{ border: '1px solid rgba(212,175,55,0.2)' }}
@@ -636,7 +641,7 @@ export default function App() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <img src="/images/mali5.jpeg" alt="Interior" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+          <img src="./images/mali5.jpeg" alt="Interior" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <div className="absolute bottom-4 left-4">
             <p className="text-white text-sm tracking-widest uppercase">Habitaciones</p>
@@ -650,7 +655,7 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <img src="/images/mali6.jpeg" alt="Rincón" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src="./images/mali6.jpeg" alt="Rincón" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </motion.div>
           <motion.div
@@ -660,7 +665,7 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <img src="/images/mali7.jpeg" alt="Camastros" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src="./images/mali7.jpeg" alt="Camastros" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-4 left-4">
               <p className="text-white text-sm tracking-widest uppercase">Descanso</p>

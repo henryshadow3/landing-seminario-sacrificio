@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from 'react';
+const particulas = Array.from({ length: 80 }, (_, i) => {
+  const ruido = (semilla) => {
+    const valor = Math.sin((i + 1) * semilla) * 43758.5453;
+    return valor - Math.floor(valor);
+  };
+
+  return {
+    id: i,
+    top: `${ruido(12.9898) * 100}%`,
+    left: `${ruido(78.233) * 100}%`,
+    size: ruido(37.719) * 2.5 + 0.8,
+    delay: `${ruido(19.913) * 8}s`,
+    duration: `${ruido(93.117) * 6 + 4}s`,
+  };
+});
 
 export default function GlimmerBackground() {
-  const [particles, setParticles] = useState([]);
-
-  useEffect(() => {
-    // Generate a fixed set of random particles on client mount
-    const newParticles = Array.from({ length: 80 }).map((_, i) => ({
-      id: i,
-      top: `${Math.random() * 100}%`,
-      left: `${Math.random() * 100}%`,
-      size: Math.random() * 2.5 + 0.8, // size between 0.8px and 3.3px
-      delay: `${Math.random() * 8}s`,
-      duration: `${Math.random() * 6 + 4}s`, // duration between 4s and 10s
-    }));
-    setParticles(newParticles);
-  }, []);
-
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      {particles.map((p) => (
+      {particulas.map((p) => (
         <div
           key={p.id}
           className="absolute bg-white rounded-full animate-sparkle"
@@ -29,7 +28,7 @@ export default function GlimmerBackground() {
             height: `${p.size}px`,
             animationDelay: p.delay,
             animationDuration: p.duration,
-            boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)',
+            boxShadow: "0 0 8px rgba(47, 243, 224, 0.65)",
           }}
         />
       ))}

@@ -1,32 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap");
 
 @import "tailwindcss";
 
 @theme {
-  --font-serif: 'Cinzel', serif;
-  --font-sans: 'Inter', sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Chakra Petch", system-ui, sans-serif;
   
   /* Divine Gold (Metals) */
-  --color-gold-light: #FFF9E6;
-  --color-gold-medium: #D4AF37;
-  --color-gold-dark: #A67C1E;
-  --color-gold-bright: #FFD700;
+  --color-gold-light: #dfe9f0;
+  --color-gold-medium: #2ff3e0;
+  --color-gold-dark: #168f88;
+  --color-gold-bright: #8afff4;
   
   /* Sacrifice (Earth & Passion) - Inspired by real terracotta/rust on tiles and wood */
-  --color-terracota: #B24C35;
-  --color-terracota-light: #D57C66;
-  --color-terracota-dark: #6E2618;
-  --color-sacred-red: #8B0000;
-  --color-sacred-red-dark: #4A0005;
+  --color-terracota: #ff2d78;
+  --color-terracota-light: #ff79aa;
+  --color-terracota-dark: #671331;
+  --color-sacred-red: #ff2d78;
+  --color-sacred-red-dark: #3d0a1e;
   
   /* Divine Lamp Light (Warmth) */
-  --color-amber-glow: #E5A93B;
-  --color-amber-glow-dark: #B87E1B;
+  --color-amber-glow: #ffb020;
+  --color-amber-glow-dark: #9b6710;
   
   /* Pool & Water (Introspection) - Inspired by the real turquoise pool */
-  --color-teal-pool: #0EA5E9;
-  --color-teal-pool-light: #38BDF8;
-  --color-teal-pool-dark: #0369A1;
+  --color-teal-pool: #2ff3e0;
+  --color-teal-pool-light: #8afff4;
+  --color-teal-pool-dark: #0b6764;
 }
 
 /* Custom Glimmer Background & Animations */
@@ -96,12 +96,12 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #000000;
+  background-color: #04050a;
 }
 
 body {
   color: #e5e5e5;
-  background-color: #000000;
+  background-color: #04050a;
   overflow-x: hidden;
 }
 
@@ -162,4 +162,132 @@ body {
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+
+/* Lenguaje visual compartido con el recorrido 3D del Templo. */
+.templo-shell {
+  --cian: #2ff3e0;
+  --magenta: #ff2d78;
+  --ambar: #ffb020;
+  --hueso: #dfe9f0;
+  color: var(--hueso);
+  background:
+    radial-gradient(circle at 20% 8%, rgba(47, 243, 224, 0.07), transparent 28rem),
+    radial-gradient(circle at 85% 30%, rgba(255, 45, 120, 0.06), transparent 32rem),
+    #04050a;
+}
+
+.templo-shell::before,
+.templo-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.templo-shell::before {
+  z-index: 60;
+  background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px);
+  opacity: 0.42;
+}
+
+.templo-shell::after {
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(47, 243, 224, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 243, 224, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+
+.templo-shell h1,
+.templo-shell h2,
+.templo-shell h3,
+.templo-shell h4 {
+  letter-spacing: 0.025em;
+}
+
+.templo-shell p,
+.templo-shell a,
+.templo-shell button {
+  text-wrap: pretty;
+}
+
+.templo-shell section {
+  border-color: rgba(47, 243, 224, 0.1);
+}
+
+.templo-shell .rounded-full,
+.templo-shell .rounded-2xl,
+.templo-shell .rounded-3xl,
+.templo-shell .rounded-xl {
+  border-radius: 2px;
+}
+
+.templo-shell .glass-card,
+.templo-shell .glass-card-terracota {
+  position: relative;
+  background: linear-gradient(135deg, rgba(47, 243, 224, 0.045), transparent 45%), rgba(4, 5, 10, 0.86);
+  border-color: rgba(47, 243, 224, 0.22);
+  box-shadow: inset 0 0 40px rgba(47, 243, 224, 0.025);
+}
+
+.templo-shell .glass-card-terracota {
+  background: linear-gradient(135deg, rgba(255, 45, 120, 0.05), transparent 45%), rgba(4, 5, 10, 0.86);
+  border-color: rgba(255, 45, 120, 0.24);
+}
+
+.templo-shell .glass-card::before,
+.templo-shell .glass-card-terracota::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  color: var(--cian);
+}
+
+.templo-shell .glass-card-terracota::before { color: var(--magenta); }
+
+.templo-cabecera {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  border-bottom-color: rgba(47, 243, 224, 0.2);
+}
+
+.templo-cabecera::after {
+  content: "SECTOR 01 / PROTOCOLO INICIÁTICO";
+  position: absolute;
+  right: 1.5rem;
+  bottom: -1.35rem;
+  color: rgba(47, 243, 224, 0.55);
+  font: 500 9px "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: 0.18em;
+}
+
+.templo-retorno {
+  font: 500 10px "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  border-radius: 0;
+  background: rgba(4, 5, 10, 0.9);
+  box-shadow: 0 0 22px rgba(47, 243, 224, 0.08);
+}
+
+.text-glow-gold { text-shadow: 0 0 18px rgba(47, 243, 224, 0.38); }
+.text-glow-terracota { text-shadow: 0 0 18px rgba(255, 45, 120, 0.34); }
+.text-glow-teal { text-shadow: 0 0 18px rgba(47, 243, 224, 0.34); }
+.box-glow-gold { box-shadow: 0 0 26px rgba(47, 243, 224, 0.18); }
+
+.templo-shell footer {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  border-top-color: rgba(255, 45, 120, 0.2);
+}
+
+@media (max-width: 720px) {
+  .templo-cabecera { padding-top: 5rem; }
+  .templo-cabecera::after { display: none; }
+  .templo-retorno { max-width: calc(100vw - 2rem); }
 }
